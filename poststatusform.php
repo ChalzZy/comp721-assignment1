@@ -14,54 +14,54 @@
   <body>
     <div class="container">
       <h1 class="text-center">Status Posting System</h1>
-      <form class="container">
+      <form class="container" action="/assignment1/poststatusprocess.php" method="post">
         <div class="mb-3">
           <label for="statusCodeField" class="form-label">Status Code (Required)</label>
-          <input type="text" class="form-control" id="statusCodeField" placeholder="">
+          <input type="text" name="statuscode" class="form-control" id="statusCodeField" required>
         </div>
         <div class="mb-3">
           <label for="statusField" class="form-label">Status (Required)</label>
-          <input type="text" class="form-control" id="statusField" placeholder="">
+          <input type="text" name="status" class="form-control" id="statusField" required>
         </div>
         <p>Share:</p>
         <div class="form-check form-check-inline">
-          <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+          <input class="form-check-input" type="radio" name="radio" id="inlineRadio1" value="option1">
           <label class="form-check-label" for="inlineRadio1">Public</label>
         </div>
         <div class="form-check form-check-inline">
-          <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+          <input class="form-check-input" type="radio" name="radio" id="inlineRadio2" value="option2">
           <label class="form-check-label" for="inlineRadio2">Friends</label>
         </div>
         <div class="form-check form-check-inline mb-3">
-          <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3">
+          <input class="form-check-input" type="radio" name="radio" id="inlineRadio3" value="option3">
           <label class="form-check-label" for="inlineRadio3">Only Me</label>
         </div>
         <p>Date:</p>
         <div class="input-group date mb-3" data-provide="datepicker">
-          <input type="date" class="form-control">
+          <input type="date" name="date" class="form-control" required>
           <div class="input-group-addon">
             <span class="glyphicon glyphicon-th"></span>
           </div>
         </div>
         <p>Permission Type:</p>
         <div class="form-check form-check-inline">
-          <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+          <input class="form-check-input" type="checkbox" name="checkbox[]" id="inlineCheckbox1" value="option1">
           <label class="form-check-label" for="inlineCheckbox1">Allow Like</label>
         </div>
         <div class="form-check form-check-inline">
-          <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+          <input class="form-check-input" type="checkbox" name="checkbox[]" id="inlineCheckbox2" value="option2">
           <label class="form-check-label" for="inlineCheckbox2">Allow Comment</label>
         </div>
         <div class="form-check form-check-inline mb-3">
-          <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3">
+          <input class="form-check-input" type="checkbox" name="checkbox[]" id="inlineCheckbox3" value="option3">
           <label class="form-check-label" for="inlineCheckbox3">Allow Share</label>
         </div>
         <div class="col-auto">
           <button type="submit" class="btn btn-primary">Post</button>
-          <button type="submit" class="btn btn-secondary">Reset</button>     
+          <button type="link" class="btn btn-secondary">Reset</button>     
         </div>
       </form>
-      <a href="/index.html">Return to Home Page</a>
+      <a href="/assignment1/index.html">Return to Home Page</a>
     </div>
   </body>
 </html>
