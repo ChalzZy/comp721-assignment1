@@ -27,4 +27,19 @@
 	} else {
 		echo "<p>Database connection success</p>";
 	}
+
+    $sql = "CREATE TABLE IF NOT EXISTS PostStatusTable (
+        id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+        statuscode VARCHAR(30) NOT NULL,
+        currentstatus VARCHAR(30) NOT NULL,
+        radio VARCHAR(50),
+        datechosen VARCHAR(10),
+        checkbox VARCHAR(30)
+        )";
+
+    if ($conn->query($sql) === TRUE) {
+        echo "Table MyGuests created successfully";
+    } else {
+        echo "Error creating table: ";
+    }
 ?>
