@@ -13,12 +13,7 @@
         echo $item . "<br />";
     }
 
-    // include('../conf/sqlinfo.inc.php');
-
-    $sql_host="localhost";
-	$sql_user="root";
-	$sql_pass="";
-	$sql_db="yrw9551";
+    require_once('conf/sqlinfo.inc.php');
 
     $conn = mysqli_connect($sql_host,
 	$sql_user,
