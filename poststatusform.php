@@ -25,15 +25,15 @@
         </div>
         <p>Share:</p>
         <div class="form-check form-check-inline">
-          <input class="form-check-input" type="radio" name="radio" id="inlineRadio1" value="option1">
+          <input class="form-check-input" type="radio" name="radio" id="inlineRadio1" value="Public">
           <label class="form-check-label" for="inlineRadio1">Public</label>
         </div>
         <div class="form-check form-check-inline">
-          <input class="form-check-input" type="radio" name="radio" id="inlineRadio2" value="option2">
+          <input class="form-check-input" type="radio" name="radio" id="inlineRadio2" value="Friends">
           <label class="form-check-label" for="inlineRadio2">Friends</label>
         </div>
         <div class="form-check form-check-inline mb-3">
-          <input class="form-check-input" type="radio" name="radio" id="inlineRadio3" value="option3">
+          <input class="form-check-input" type="radio" name="radio" id="inlineRadio3" value="Only Me">
           <label class="form-check-label" for="inlineRadio3">Only Me</label>
         </div>
         <p>Date:</p>
@@ -49,15 +49,15 @@
         </div>
         <p>Permission Type:</p>
         <div class="form-check form-check-inline">
-          <input class="form-check-input" type="checkbox" name="checkbox[]" id="inlineCheckbox1" value="option1">
+          <input class="form-check-input" type="checkbox" name="checkbox[]" id="inlineCheckbox1" value="Allow Like">
           <label class="form-check-label" for="inlineCheckbox1">Allow Like</label>
         </div>
         <div class="form-check form-check-inline">
-          <input class="form-check-input" type="checkbox" name="checkbox[]" id="inlineCheckbox2" value="option2">
+          <input class="form-check-input" type="checkbox" name="checkbox[]" id="inlineCheckbox2" value="Allow Comment">
           <label class="form-check-label" for="inlineCheckbox2">Allow Comment</label>
         </div>
         <div class="form-check form-check-inline mb-3">
-          <input class="form-check-input" type="checkbox" name="checkbox[]" id="inlineCheckbox3" value="option3">
+          <input class="form-check-input" type="checkbox" name="checkbox[]" id="inlineCheckbox3" value="Allow Share">
           <label class="form-check-label" for="inlineCheckbox3">Allow Share</label>
         </div>
         <div class="col-auto">
