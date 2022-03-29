@@ -20,7 +20,7 @@
         method="get"
       >
         <?php 
-            $goBack = "<button type=\"button\" class=\"btn btn-primary\">Go back</button>";
+            $goBack = "<a href=\"../assignment1/poststatusform.php\" type=\"button\" class=\"btn btn-primary\">Go back</a>";
 
             $statusCode = $_POST["statuscode"];
             $status = $_POST["status"];
@@ -92,7 +92,9 @@
                 // check if the statusCode already exists
                 $result = mysqli_query($conn, $retrieveStatusCode);
                 if (mysqli_num_rows($result) > 0) {
-                    exit ("The status code already exists. Please try another one!");
+                    echo "<div class=\"alert alert-danger\" role=\"alert\">The status code already exists. Please try another one!</div>";
+                    echo $goBack;
+                    // echo ("The status code already exists. Please try another one!");
                 } else {
                     // echo "<br />No duplicate status codes found!";
                     $noStatusCodeDuplicate = true;
@@ -107,20 +109,23 @@
                     // echo '<br />matches';
                     $passedRegex = true;
                 } else {
-                    echo '<br />doesnt match';
+                    echo "<div class=\"alert alert-danger\" role=\"alert\">Your status
+                    is in a wrong format! The status can only contain alphanumericals and spaces, comma, period,
+                    exclamation point and question mark and cannot be blank!</div>";
+                    echo $goBack;
                 }
             }
 
-            // // insert data into table
-            // if ($passedRegex) {
-            //     $insertData = "INSERT INTO `poststatustable`(`statuscode`, `currentstatus`, `radio`, `datechosen`, `checkbox`) VALUES ('".$statusCode."','".$status."','".$radio."','".$date."','".$checkboxConcat."')";
+            // insert data into table
+            if ($passedRegex) {
+                $insertData = "INSERT INTO `poststatustable`(`statuscode`, `currentstatus`, `radio`, `datechosen`, `checkbox`) VALUES ('".$statusCode."','".$status."','".$radio."','".$date."','".$checkboxConcat."')";
                 
-            //     if ($conn->query($insertData) === true) {
-            //         echo "New record created successfully";
-            //     } else {
-            //         echo "Error: " . $sql . "<br>" . $conn->error;
-            //     }
-            // }
+                if ($conn->query($insertData) === true) {
+                    echo "<div class=\"alert alert-success\" role=\"alert\">Congratulations! The status has been posted!</div>";
+                } else {
+                    echo "Error: " . $sql . "<br>" . $conn->error;
+                }
+            }
         ?>
       <p><br /><a href="/assignment1/index.html">Return to Home Page</a></p>
     </div>
