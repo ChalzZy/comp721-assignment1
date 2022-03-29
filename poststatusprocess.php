@@ -62,6 +62,10 @@
         }
     }
 
-    // check formatting of status
-    echo "<br />test";
+    $pattern = "/[0-9A-Za-z.,?! ]+$/";
+    if (preg_match($pattern, $status)) {
+        echo '<br />matches';
+    } else {
+        echo '<br />doesnt match';
+    }
 ?>

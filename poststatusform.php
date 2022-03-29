@@ -38,10 +38,14 @@
         </div>
         <p>Date:</p>
         <div class="input-group date mb-3" data-provide="datepicker">
-          <input type="date" name="date" class="form-control" required>
+          <?php
+          echo '
+          <input type="date" name="date" class="form-control" value="'.date('Y-m-d').'" required>
           <div class="input-group-addon">
             <span class="glyphicon glyphicon-th"></span>
           </div>
+          '
+          ?>
         </div>
         <p>Permission Type:</p>
         <div class="form-check form-check-inline">
