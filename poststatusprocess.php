@@ -43,6 +43,13 @@
         <?php 
             $goBack = "<a href=\"../assignment1/poststatusform.php\" type=\"button\" class=\"btn btn-primary\">Go back</a>";
 
+            if (isset($_POST["statuscode"]) || isset($_POST["status"])) {
+            } else {
+                echo "<div class=\"alert alert-danger\" role=\"alert\">Your input is empty. Please try again.</div>";
+                echo $goBack;
+                exit();
+            }
+
             $statusCode = $_POST["statuscode"];
             $status = $_POST["status"];
             $radio = $_POST["radio"];
