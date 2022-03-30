@@ -83,7 +83,7 @@
         </div>
         <div class="col-auto">
           <button type="submit" class="btn btn-primary">Post</button>
-          <button type="link" class="btn btn-secondary">Reset</button>     
+          <button type="reset" class="btn btn-secondary">Reset</button>     
         </div>
       </form>
       <a href="/assignment1/index.html">Return to Home Page</a>
