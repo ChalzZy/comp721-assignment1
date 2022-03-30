@@ -12,26 +12,21 @@
     <title>Status Posting System</title>
   </head>
   <body>
-    <div class="container">
+    <div class="container text-center">
       <h1 class="text-center">Status Information</h1>
-      <form
-        class="container text-center"
-        action="/assignment1/searchstatusprocess.php"
-        method="get"
-      >
         <?php 
-            $goBack = "<a href=\"../assignment1/poststatusform.php\" type=\"button\" class=\"btn btn-primary\">Go back</a>";
+            $goBack = "<a href=\"../assignment1/searchstatusform.html\" type=\"button\" class=\"btn btn-primary\">Go back</a>";
             $search = "";
 
             if (empty($_GET["search"])) {
-                echo "The search string is empty. Please enter a keyword to search.<br />";
+                echo "  <div class=\"alert alert-danger\" role=\"alert\">
+                            The search string is empty. Please enter a keyword to search.
+                        </div>";
                 echo $goBack;
                 exit();
             };
 
             $search = $_GET["search"];
-
-            echo $search . "<br />";
 
             require_once('conf/sqlinfo.inc.php');
 
@@ -41,19 +36,42 @@
             $sql_db
             );
 
-            $query = "SELECT * FROM `poststatustable` WHERE currentstatus LIKE '%fox%'";
+            $query = "SELECT * FROM `poststatustable` WHERE currentstatus LIKE '%".$search."%'";
             $queryResult = mysqli_query($conn, $query);
 
             if ($queryResult->num_rows > 0) {
                 // output data of each row
+                echo "<table class=\"table\">";
+                echo "  <thead>
+                            <tr>
+                                <th scope=\"col\">Status</th>
+                                <th scope=\"col\">Status Code</th>
+                                <th scope=\"col\">Share</th>
+                                <th scope=\"col\">Date Posted</th>
+                                <th scope=\"col\">Permission</th>
+                            </tr>
+                        </thead>
+                        <tbody>";
+                //creation of table
                 while($row = $queryResult->fetch_assoc()) {
-                  echo $row["currentstatus"] . ", " . $row["statuscode"] . ", " . $row["radio"] . ", " . $row["datechosen"] . ", " . $row["checkbox"] . "<br />";
+                    echo "<tr>";
+                        echo "<th scope=\"row\">". $row["currentstatus"] ."</th>";
+                        echo "<th>". $row["statuscode"] . "</th>";
+                        echo "<th>". $row["radio"] . "</th>";
+                        echo "<th>". $row["datechosen"] . "</th>";
+                        echo "<th>". $row["checkbox"] . "</th>";
+                    echo "</tr>";
                 }
-              } else {
-                echo "0 results";
-              }
-
-            // echo $queryResult;
+                echo "</tbody>";
+                echo "</table>";
+                echo "<a href=\"../assignment1/searchstatusform.html\" type=\"button\" class=\"btn btn-primary me-3\">Search for another status</a>";
+                echo "<a href=\"../assignment1/index.html\" type=\"button\" class=\"btn btn-primary\">Go home</a>";
+            } else {    
+                echo "  <div class=\"alert alert-warning\" role=\"alert\">
+                             '".$search."' status not found. Please try a different keyword.
+                        </div>";
+                echo $goBack;
+            }
         ?>
       <p><br /><a href="/assignment1/index.html">Return to Home Page</a></p>
     </div>
