@@ -31,7 +31,7 @@
 
             $search = $_GET["search"];
 
-            echo $search;
+            echo $search . "<br />";
 
             require_once('conf/sqlinfo.inc.php');
 
@@ -40,6 +40,20 @@
             $sql_pass,
             $sql_db
             );
+
+            $query = "SELECT * FROM `poststatustable` WHERE currentstatus LIKE '%fox%'";
+            $queryResult = mysqli_query($conn, $query);
+
+            if ($queryResult->num_rows > 0) {
+                // output data of each row
+                while($row = $queryResult->fetch_assoc()) {
+                  echo $row["currentstatus"] . ", " . $row["statuscode"] . ", " . $row["radio"] . ", " . $row["datechosen"] . ", " . $row["checkbox"] . "<br />";
+                }
+              } else {
+                echo "0 results";
+              }
+
+            // echo $queryResult;
         ?>
       <p><br /><a href="/assignment1/index.html">Return to Home Page</a></p>
     </div>
