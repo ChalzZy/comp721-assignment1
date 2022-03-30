@@ -12,6 +12,27 @@
     <title>Status Posting System</title>
   </head>
   <body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-3">
+      <a class="navbar-brand ps-3" href="/">Diary - Social Media Network</a>
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="/assignment1/">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/assignment1/searchstatusform.html"
+            >Search Status</a
+          >
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/assignment1/poststatusform.php"
+            >Post Status</a
+          >
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/assignment1/about.html">About</a>
+        </li>
+      </ul>
+    </nav>
     <div class="container text-center">
       <h1 class="text-center">Status Information</h1>
         <?php 
@@ -75,6 +96,11 @@
         ?>
       <p><br /><a href="/assignment1/index.html">Return to Home Page</a></p>
     </div>
+    <footer class="bg-dark text-center text-lg-start mt-5">
+      <div class="text-center p-3 text-light">
+        Charles Monaghan | Student ID: 18012390 | COMP721 2022 Assignment 1
+      </div>
+    </footer>
   </body>
 </html>
 
