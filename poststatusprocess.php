@@ -85,11 +85,11 @@
             // only creates table if it doesn't already exist
             $sql = "CREATE TABLE IF NOT EXISTS PostStatusTable (
                 id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-                statuscode VARCHAR(30) NOT NULL,
-                currentstatus VARCHAR(30) NOT NULL,
-                radio VARCHAR(50),
+                statuscode VARCHAR(5) NOT NULL,
+                currentstatus VARCHAR(100) NOT NULL,
+                radio VARCHAR(10),
                 datechosen VARCHAR(10),
-                checkbox VARCHAR(30)
+                checkbox VARCHAR(50)
                 )";
 
             $retrieveStatusCode = "SELECT statuscode FROM `poststatustable` 

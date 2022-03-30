@@ -56,43 +56,60 @@
             $sql_pass,
             $sql_db
             );
+            
+            $exists = false;
+            try {
+                $tableExists = mysqli_query($conn, "SELECT * FROM `poststatustable` WHERE 1");
+                $exists = true;
+            } catch (Exception $e) {
+                $exists = false;
+            }
 
-            $query = "SELECT * FROM `poststatustable` WHERE currentstatus LIKE '%".$search."%'";
-            $queryResult = mysqli_query($conn, $query);
-
-            if ($queryResult->num_rows > 0) {
-                // output data of each row
-                echo "<table class=\"table\">";
-                echo "  <thead>
-                            <tr>
-                                <th scope=\"col\">Status</th>
-                                <th scope=\"col\">Status Code</th>
-                                <th scope=\"col\">Share</th>
-                                <th scope=\"col\">Date Posted</th>
-                                <th scope=\"col\">Permission</th>
-                            </tr>
-                        </thead>
-                        <tbody>";
-                //creation of table
-                while($row = $queryResult->fetch_assoc()) {
-                    echo "<tr>";
-                        echo "<th scope=\"row\">". $row["currentstatus"] ."</th>";
-                        echo "<th>". $row["statuscode"] . "</th>";
-                        echo "<th>". $row["radio"] . "</th>";
-                        echo "<th>". $row["datechosen"] . "</th>";
-                        echo "<th>". $row["checkbox"] . "</th>";
-                    echo "</tr>";
-                }
-                echo "</tbody>";
-                echo "</table>";
-                echo "<a href=\"../assignment1/searchstatusform.html\" type=\"button\" class=\"btn btn-primary me-3\">Search for another status</a>";
-                echo "<a href=\"../assignment1/index.html\" type=\"button\" class=\"btn btn-primary\">Go home</a>";
-            } else {    
-                echo "  <div class=\"alert alert-warning\" role=\"alert\">
-                             '".$search."' status not found. Please try a different keyword.
-                        </div>";
+            if ($exists) {
+            } else {
+                echo "<div class=\"alert alert-danger\" role=\"alert\">The MySQL table does not exist. Please create it first.</div>";
                 echo $goBack;
             }
+
+            if ($exists) {
+                $query = "SELECT * FROM `poststatustable` WHERE currentstatus LIKE '%".$search."%'";
+                $queryResult = mysqli_query($conn, $query);
+                
+                if ($queryResult->num_rows > 0) {
+                    // output data of each row
+                    echo "<table class=\"table\">";
+                    echo "  <thead>
+                                <tr>
+                                    <th scope=\"col\">Status</th>
+                                    <th scope=\"col\">Status Code</th>
+                                    <th scope=\"col\">Share</th>
+                                    <th scope=\"col\">Date Posted</th>
+                                    <th scope=\"col\">Permission</th>
+                                </tr>
+                            </thead>
+                            <tbody>";
+                    //creation of table
+                    while($row = $queryResult->fetch_assoc()) {
+                        echo "<tr>";
+                            echo "<th scope=\"row\">". $row["currentstatus"] ."</th>";
+                            echo "<th>". $row["statuscode"] . "</th>";
+                            echo "<th>". $row["radio"] . "</th>";
+                            echo "<th>". $row["datechosen"] . "</th>";
+                            echo "<th>". $row["checkbox"] . "</th>";
+                        echo "</tr>";
+                    }
+                    echo "</tbody>";
+                    echo "</table>";
+                    echo "<a href=\"../assignment1/searchstatusform.html\" type=\"button\" class=\"btn btn-primary me-3\">Search for another status</a>";
+                    echo "<a href=\"../assignment1/index.html\" type=\"button\" class=\"btn btn-primary\">Go home</a>";
+                } else {    
+                    echo "  <div class=\"alert alert-warning\" role=\"alert\">
+                                 '".$search."' status not found. Please try a different keyword.
+                            </div>";
+                    echo $goBack;
+                }
+            }
+
         ?>
       <p><br /><a href="/assignment1/index.html">Return to Home Page</a></p>
     </div>
